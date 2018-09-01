@@ -16,7 +16,7 @@ park = dict()
 @search.route("/", methods=['GET', 'POST'])
 def searchpage():
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8',cursorclass=pymysql.cursors.DictCursor)
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8',cursorclass=pymysql.cursors.DictCursor)
     # 실행자 생성
     cursor = conn.cursor()   
 
@@ -73,7 +73,7 @@ def searchpage():
 @search.route("/result/", methods=['GET', 'POST'])
 def searchResult():
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생
     cursor = conn.cursor()   
 
@@ -137,7 +137,7 @@ def searchResult():
 
     conn.close()
 
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8',cursorclass=pymysql.cursors.DictCursor)
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8',cursorclass=pymysql.cursors.DictCursor)
     # 실행자 생성
     cursor = conn.cursor()   
         

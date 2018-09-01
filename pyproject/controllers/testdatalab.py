@@ -5,7 +5,7 @@ import pandas as pd
 gmaps = googlemaps.Client(key='AIzaSyCoLfrAJNvN7zqZpqNGby1xYuZTOzkOGf0')
 
 def find_do(do):
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
     cursor = conn.cursor()
     execute_str = 'select count(*) cnt from parkinglot where p_province like %s'
     arg = ( do + '%' )

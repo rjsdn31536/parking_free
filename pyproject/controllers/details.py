@@ -9,7 +9,7 @@ import re
 # 주차장 개방 날짜 구현
 # date_num(1, p_code) 을 입력하면 want DB에서의 go_date1을 검색하여 가고싶은 사람의 개수를 return한다.
 def date_num(day, p_code):
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()   
 
@@ -22,7 +22,7 @@ def date_num(day, p_code):
     return len(data)
 
 def like_num(p_code):
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()   
 
@@ -89,7 +89,7 @@ def detailpage2(p_code):
     p_code_num = int(re.findall('\d+', p_code)[0])
 
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()   
     execute_str = "select * from parkinglot where p_code = " + '"' + str(p_code_num) + '"'
@@ -199,7 +199,7 @@ def park_date(p_code):
             date5 = 1
 
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()   
     sql = "update want set go_date1=%s, go_date2=%s, go_date3=%s, go_date4=%s, go_date5=%s where e_mail = %s and p_code = %s"     
@@ -216,7 +216,7 @@ def likeside(p_code):
     like = request.form['like']
         
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()
     email = session['ID']
@@ -232,7 +232,7 @@ def normalside(p_code):
     normal = request.form['normal']
         
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()  
     email = session['ID']
@@ -248,7 +248,7 @@ def normalside(p_code):
 def hateside(p_code):
     hate = request.form['hate']
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
     # 실행자 생성
     cursor = conn.cursor()  
     email = session['ID']
@@ -262,7 +262,7 @@ def hateside(p_code):
 @details.route("/comment/<p_code>", methods=['POST'])
 def comment(p_code):    
     # DB 연동 - 연결
-    conn = pymysql.connect(host=' mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
 
     comment_str= request.form['comment']
     
