@@ -33,11 +33,9 @@ function MM_popupMsg(msg){
 <body>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul class=flashes>
         {% for message in messages %}
           <script>MM_popupMsg(message)</script>
         {% endfor %}
-        </ul>
       {% endif %}
     {% endwith %}
   <section class="container">
