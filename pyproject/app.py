@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from controllers.search import search
 from controllers.details import details
 from controllers.datalab import datalab
@@ -77,10 +77,17 @@ def login_result():
     user_pnum = request.form['phone']
     user_address = request.form['address']
     user_age = request.form['age']
+    if not user_age.isnumeric():
+        flash('나이를 잘못 입력하셨습니다. 숫자로만 입력해주세요!')
+        return redirect('/')
+
     user_age = int(user_age)
     user_sex = request.form['gender']
     user_family = request.form['family']
     user_family = int(user_family)
+
+
+
     # 함수 실행
     member_data = insertData(user_email,user_pnum,user_address,user_age,user_sex,user_family)
 
