@@ -25,12 +25,17 @@
 
 </head>
 
+<script type="text/javascript">
+function MM_popupMsg(msg){
+  alert(msg);
+}
+</script>
 <body>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul class=flashes>
         {% for message in messages %}
-          <li>{{ message }}</li>
+          <input name="" type="" id="" onClick="MM_popupMsg(message)" value="클릭">
         {% endfor %}
         </ul>
       {% endif %}
