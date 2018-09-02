@@ -79,6 +79,7 @@ def login_result():
     user_age = request.form['age']
     if not user_age.isnumeric():
         flash('나이를 잘못 입력하셨습니다. 숫자로만 입력해주세요!')
+        print('들어옴')
         return redirect('/')
 
     user_age = int(user_age)
@@ -139,8 +140,6 @@ def member():
 @app.route("/member/update", methods=['POST'])
 def member_update():
     email = session['ID']
-    print('email====', email)
-    print(request.form)
     update_pnum = request.form['phone']
     update_address = request.form['address']
     update_age = request.form['age']
