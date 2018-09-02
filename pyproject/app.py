@@ -78,13 +78,14 @@ def login_result():
     user_address = request.form['address']
     user_age = request.form['age']
     if not user_age.isnumeric():
-        flash('나이를 잘못 입력하셨습니다. 숫자로만 입력해주세요!')
-        print('들어옴')
+        flash('나이')
         return redirect('/')
-
     user_age = int(user_age)
     user_sex = request.form['gender']
     user_family = request.form['family']
+    if not user_family.isnumeric():
+        flash('인원')
+        return redirect('/')
     user_family = int(user_family)
 
 

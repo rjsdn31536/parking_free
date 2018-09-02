@@ -34,7 +34,11 @@ function MM_popupMsg(msg){
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
-          <script>MM_popupMsg("실수!")</script>
+          {% if message == "나이" %}
+            <script>MM_popupMsg("나이를 잘못 입력하셨습니다! 숫자로만 입력해주세요.")</script>
+          {% elif message == "인원" %}
+            <script>MM_popupMsg("인원을 잘못 입력하셨습니다! 숫자로만 입력해주세요.")</script>
+          {% endif %}
         {% endfor %}
       {% endif %}
     {% endwith %}
@@ -70,7 +74,7 @@ function MM_popupMsg(msg){
             <label for="age">나이</label>
             <input type="gender" name="gender" id="gender" class="inpt" required="required" placeholder="성별 (남자는 M,여자는 W으로 입력)">
             <label for="gender">성별</label>
-            <input type="family" name="family" id="family" class="inpt" required="required" placeholder="인원 수">
+            <input type="family" name="family" id="family" class="inpt" required="required" placeholder="동행 인원 수">
             <label for="family">동행 인원 수</label>
             <div class="submit-wrap">
                   <input type="submit" value="회원가입하기" class="submit">
