@@ -35,7 +35,7 @@ function MM_popupMsg(msg){
       {% if messages %}
         <ul class=flashes>
         {% for message in messages %}
-          <input name="" type="" id="" onClick="MM_popupMsg(message)" value="클릭">
+          <script>MM_popupMsg(message)</script>
         {% endfor %}
         </ul>
       {% endif %}
