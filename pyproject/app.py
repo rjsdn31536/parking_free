@@ -90,7 +90,18 @@ def login_result():
         return redirect('/')
     user_family = int(user_family)
 
+    # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
+    # DB 연동 - 연결
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
+    # 실행자 생성
+    cursor = conn.cursor()   
+    execute_str = 'select p_code from want where e_mail = "' + user_email + '"'
+    cursor.execute(execute_str) 
+    park_data = cursor.fetchall()
 
+    if park_data != ():
+        flash('아이디중복')
+        return redirect('/')
 
     # 함수 실행
     member_data = insertData(user_email,user_pnum,user_address,user_age,user_sex,user_family)
@@ -98,13 +109,6 @@ def login_result():
     session['ID'] = user_email
     
     session['logged_in'] = True
-
-    # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
-    # DB 연동 - 연결
-    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
-    # 실행자 생성
-    cursor = conn.cursor()   
-
     execute_str = 'select p_code from want where e_mail = "' + user_email + '"'
     cursor.execute(execute_str) 
     park_data = cursor.fetchall()
