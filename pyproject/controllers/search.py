@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_template, request, redirect, session
+from flask import Blueprint, render_template, request, redirect, session, flash
 import googlemaps
 import pymysql
 import numpy as np
@@ -95,6 +95,7 @@ def searchResult():
     try:
         addr_ll = gmaps.geocode(address, language='ko')[0]['geometry']['location']
     except:
+        flash("검색실패")
         addr_ll = gmaps.geocode('서울역', language='ko')[0]['geometry']['location']
 
     addr_x = addr_ll['lat']
