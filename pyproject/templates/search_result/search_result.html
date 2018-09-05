@@ -48,10 +48,6 @@
         {% for message in messages %}
           {% if message == "검색실패" %}
             <script>MM_popupMsg("잘못된 주소를 입력했거나 아무것도 입력하지 않았습니다.\n초기값인 서울역으로 검색합니다.")</script>
-          {% elif message == "인원" %}
-            <script>MM_popupMsg("인원을 잘못 입력하셨습니다! 숫자로만 입력해주세요.")</script>
-          {% elif message == "아이디중복" %}
-            <script>MM_popupMsg("중복된 E-Mail입니다. 다른 이메일을 사용해주세요!")</script>
           {% endif %}
         {% endfor %}
       {% endif %}

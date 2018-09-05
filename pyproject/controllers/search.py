@@ -83,7 +83,7 @@ def searchResult():
     except:
         return redirect('/')
 
-    # 로그인을 한 상태에서 /result/에 강제 접속하는 경우(역삼역으로 초기값)
+    # 로그인을 한 상태에서 /result/에 강제 접속하는 경우(서울역으로 초기값)
     # 본인 위치 확인이 가능하면 본인 위치 주변의 위치 찾으면 좋을듯!
     try:
         address = request.form['address']
