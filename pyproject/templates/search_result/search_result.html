@@ -33,10 +33,9 @@
   <link rel="stylesheet" href="/static/search/css/navmodal.css">
   <style>
   a:link {color:black;border:none}
-  a:visited {color:black;border:none}
+  a:visited {color:darkblue;border:none}
   a:hover {color:green}
   a:active {color:green}
-  
   </style>
 
 </head>
@@ -192,7 +191,7 @@
             '주차장 유형 : ' + park[key]['p_type'] + ' <br />',
             '관리기관 : ' + park[key]['p_admit'] + ' <br />',
             '   </p>',
-            '<a href="http://13.124.233.100:5000/details/'+key+'" target="_blank" >상세보기</a>',
+            '<a href="http://13.124.233.100:5000/details/'+key+'" target="_blank" style="text-align: end" >상세보기</a>',
             '</div>'
           ].join('');
           var infoWindow = new naver.maps.InfoWindow({
