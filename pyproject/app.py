@@ -155,9 +155,15 @@ def member_update():
 
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
     cursor = conn.cursor()
-    # e_mail, phone_number, address, age, sex, family
-    sql = "update member set phone_number=%s, address=%s, age =%s, sex =%s, family =%s where e_mail=%s"
-    cursor.execute(sql,(update_pnum, update_address, update_age, update_sex, update_family,email))
+
+    # ERROR CASE : 회원정보 수정을 하지만 잘못 입력한 경우(데이터의 길이가 크거나 나이, 동행인원이 integer가 아닌 경우))
+    if len(update_pnum)>50 or len(update_address)>100 or not update_age.isnumeric() or not update_family.isnumeric() or len(update_sex)>1:
+        flash("updateError")
+    else:
+        # e_mail, phone_number, address, age, sex, family
+        flash("updateSuccess")
+        sql = "update member set phone_number=%s, address=%s, age =%s, sex =%s, family =%s where e_mail=%s"
+        cursor.execute(sql,(update_pnum, update_address, update_age, update_sex, update_family,email))
     
      # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
     # 실행자 생성
