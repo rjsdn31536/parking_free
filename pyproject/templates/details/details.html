@@ -59,20 +59,20 @@
               <form action="/details/like/{{p_code}}" method="POST">
                 <!-- hidden은 여기서 사용자에게 보이지 않는 값을 의미한다 -->
                   <input type="hidden" name="like" value="2">
-                  <input type="submit" value="좋아요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white">
+                  <input type="submit" value="좋아요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white;cursor: pointer;">
                   <span style="font-family: 'Do Hyeon'; color: rgb(0, 0, 0); font-size: 20px">누적수 : {{day_like2}}</span>
               </form>
             </div>
             <div>
                 <form action="/details/normal/{{p_code}}" method="POST">
                   <input type="hidden" name="normal" value="1">
-                  <input type="submit" value="그냥 그래요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white">
+                  <input type="submit" value="그냥 그래요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white;cursor: pointer;">
                   <span style="font-family: 'Do Hyeon'; color: rgb(0, 0, 0); font-size: 20px">누적수 : {{day_like1}}</span>
                 </form>
             <div>
               <form action="/details/hate/{{p_code}}" method="POST">
                 <input type="hidden" name="hate" value="0">
-                <input type="submit" value="싫어요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white">
+                <input type="submit" value="싫어요" style="width:100px;height:40px;font-family:'Do Hyeon';margin-bottom:10px;background:white;cursor: pointer;">
                 <span style="font-family: 'Do Hyeon'; color: rgb(0, 0, 0); font-size: 20px">누적수 : {{day_like0}}</span>
               </form>
             </div>
