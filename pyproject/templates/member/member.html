@@ -207,32 +207,29 @@
                   <td>
                       <input type="address" name="address" value="{{member_data.address}}" id="address" class="inpt" required="required" placeholder="주소 (OO도 OO시 OO구로 입력)">
                   </td>
-                  <td> - </td>
                 </tr>
                 <tr>
                   <td>나이</td>
                   <td>
                       <input type="age" name="age" value="{{member_data.age}}" id="age" class="inpt" required="required" placeholder="나이">
                   </td>
-                  <td> - </td>
                 </tr>
                 <tr>
                   <td>성별</td>
                   <td>
                       <input type="gender" name="gender" value="{{member_data.sex}}" id="gender" class="inpt" required="required" placeholder="성별 (남자 혹은 여자로 입력)">
                   </td>
-                  <td> - </td>
                 </tr>
                 <tr>
                   <td>인원 수</td>
                   <td>
                       <input type="family" name="family" value="{{member_data.family}}" id="family" class="inpt" required="required" placeholder="인원 수">
                   </td>
-                  <td> - </td>
                 </tr>
               </table>
               <div class="button" style="font-family:'Do Hyeon', sans-serif">
               <input type="submit" value="수정하기" class="submit">
+                <script>MM_popupMsg("정보가 수정되었습니다.")</script>
               </div>
               </form>
             </div>
