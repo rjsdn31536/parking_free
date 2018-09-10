@@ -46,7 +46,7 @@
       {% if messages %}
         {% for message in messages %}
           {% if message == "검색실패" %}
-            <script>MM_popupMsg("잘못된 주소를 입력했거나 아무것도 입력하지 않았습니다.\n초기값인 서울역으로 검색합니다.")</script>
+            <script>alert("잘못된 주소를 입력했거나 아무것도 입력하지 않았습니다.\n초기값인 서울역으로 검색합니다.")</script>
           {% endif %}
         {% endfor %}
       {% endif %}
