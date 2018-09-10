@@ -47,9 +47,9 @@
         {% for message in messages %}
           {% if message == "검색실패" %}
             <script>alert("잘못된 주소를 입력했거나 아무것도 입력하지 않았습니다.\n초기값인 서울역으로 검색합니다.")</script>
-          {% if message == "updateError" %}
+          {% elif message == "updateError" %}
             <script>alert("회원정보 수정이 정상적으로 이루어지지 않았습니다. 다시 한번 확인해주세요.")</script>
-          {% if message == "updateSuccess" %}
+          {% elif message == "updateSuccess" %}
             <script>alert("회원정보가 정상적으로 수정되었습니다!")</script>
           {% endif %}
         {% endfor %}
