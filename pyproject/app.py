@@ -90,6 +90,11 @@ def login_result():
         return redirect('/')
     user_family = int(user_family)
 
+    # ERROR CASE. 데이터의 길이가 큰 경우
+    if len(user_email)>100 or len(user_pnum)>50 or len(user_address)>100 or len(user_sex)>1:
+        flash("signUpErrorLen")
+        return redirect('/')
+
     # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
     # DB 연동 - 연결
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
