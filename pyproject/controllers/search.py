@@ -41,6 +41,7 @@ def searchpage():
     member_data = cursor.fetchall()
 
     if member_data == ():
+        flash('emailfail')
         return redirect('/')
 
     
