@@ -16,10 +16,14 @@
 #### 4.1 python 3.7
 #### 4.2 mariaDB
 
+# 5. 정리
+
+
+## ○ 참고
 > #### 자세한 내용, 궁금한 내용은 comment나 rjsdn315@gmail.com 으로 메일 보내주시면 답변해드리겠습니다.
 
-> #### ※ 참고     https://github.com/rjsdn31536/publicparking_data/
-> > 데이터 전처리 코드는 참고 github을 참고하시기 바랍니다.
+> ### https://github.com/rjsdn31536/publicparking_data/
+> > #### 데이터 전처리 코드는 참고 github을 참고하시기 바랍니다.
 
 
 
