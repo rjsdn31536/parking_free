@@ -82,7 +82,7 @@
             </ul>
             <ul class='dropdownList'>
               {% for i in range(park_want_len) %}
-              <a href="http://13.124.233.100:5000/details/{{park_code_list[i]}}" target="_blank" style="color:black">
+              <a href="http://www.publicparking.kr/details/{{park_code_list[i]}}" target="_blank" style="color:black">
                 <li>
                   <h3 style="text-align:center">{{park_want_list[i]}}</h3>
                 </li>
@@ -92,7 +92,7 @@
         </div>
       </li>
       <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="http://13.124.233.100:5000/datalab">데이터 Lab</a>
+          <a class="js-scroll-trigger" href="http://www.publicparking.kr/datalab">데이터 Lab</a>
       </li>
     </ul>
   </nav>
@@ -112,7 +112,7 @@
       </ul>
       <ul style="padding:0">
       {% for i in park.keys() %}
-        <a href="http://13.124.233.100:5000/details/{{i}}" target="_blank">
+        <a href="http://www.publicparking.kr/details/{{i}}" target="_blank">
           <li style="display:block">
               <h3>{{park[i]['p_name']}}</h3>
               <p >{{park[i]['p_address']}}</p>
@@ -195,7 +195,7 @@
             '주차장 유형 : ' + park[key]['p_type'] + ' <br />',
             '관리기관 : ' + park[key]['p_admit'] + ' <br /><br />',
             '   ',
-            '<a href="http://13.124.233.100:5000/details/'+key+'" style="position:absolute; right:20px; font-size:20px;bottom:7px" target="_blank">상세보기</a></p>',
+            '<a href="http://www.publicparking.kr/details/'+key+'" style="position:absolute; right:20px; font-size:20px;bottom:7px" target="_blank">상세보기</a></p>',
             '</div>'
           ].join('');
           var infoWindow = new naver.maps.InfoWindow({
