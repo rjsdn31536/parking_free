@@ -28,7 +28,7 @@
   <link href="/static/search_result/css/left_side_menu.css" rel="stylesheet">
   <link href="/static/search_result/css/mapdiv.css" rel="stylesheet">
   <!-- naver map api -->
-  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=tUqrLwYE5RBZ93YVPsdb&submodules=geocoder"></script>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=tUqrLwYE5RBZ93YVPsdb&submodules=panorama,geocoder,drawing,visualization"></script>
   <!-- navmodal CSS -->
   <link rel="stylesheet" href="/static/search/css/navmodal.css">
   <style>
@@ -165,6 +165,7 @@
 
       var markers = [],
           infoWindows = [];
+          shortInfos = [];
 
       for (var key in MARKER_SPRITE_POSITION) {
 
@@ -184,7 +185,16 @@
               },
               zIndex: 100
           });
-
+          // mouseover 시 뜨는 간단한 정보창
+          var shortcontent = [
+              '<div style="width:100%;height:20px;padding-bottom:5px;text-align:center">',
+              '<h4 style="margin:5px 5px 0 5px">'+park[key]['p_name']+'</h4>',
+              '</div>'
+          ].join('');
+          var shortInfo = new naver.maps.InfoWindow({
+                content:shortcontent
+          })
+          // click 시 뜨는 정보창
           var contentString = [
             '<div class="iw_inner">',
             // 주차장명
@@ -204,6 +214,7 @@
 
           markers.push(marker);
           infoWindows.push(infoWindow);
+          shortInfos.push(shortInfo);
       };
 
       naver.maps.Event.addListener(map, 'idle', function() {
@@ -241,6 +252,7 @@
       }
 
       // // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+      // click 이벤트
       function getClickHandler(seq) {
           return function(e) {
               var marker = markers[seq],
@@ -253,10 +265,32 @@
               }
           }
       }
+      // mouseover 이벤트
+      function getMouseover(seq) {
+          return function(e) {
+              var marker = markers[seq],
+                  shortInfo = shortInfos[seq],
+                  infoWindow = infoWindows[seq];
+              if (infoWindow.getMap()) {
+                  pass;
+              } else {
+                  shortInfo.open(map, marker);
+              }
+            }
+        }
+      // mouseout 이벤트
+      function getMouseout(seq) {
+          return function(e) {
+              var marker = markers[seq],
+                  shortInfo = shortInfos[seq];
+              shortInfo.close();
+          }
+      }
 
       for (var i=0, ii=markers.length; i<ii; i++) {
           naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
-          
+          naver.maps.Event.addListener(markers[i], 'mouseover', getMouseover(i));       
+          naver.maps.Event.addListener(markers[i], 'mouseout', getMouseout(i));    
       }
       
 
