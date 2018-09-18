@@ -33,7 +33,7 @@ def login():
 
     # 로그인이 되어있지 않은 경우(로그인창 띄워야함))
     except:
-            print('aaaahrtae123')
+        print('aaaahrtae123')
         return render_template('login/login.html')
 
     # 로그인이 되어있는 경우
