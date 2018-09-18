@@ -180,6 +180,14 @@ def detailpage2(p_code):
 # get과 post방식 둘다 사용하기 get 화면 post 가고싶어요 받기
 @details.route("/date/<p_code>", methods=['POST'])
 def park_date(p_code):
+    str_return = "/details/" + str(p_code)
+    
+    # 예외처리(비회원)
+    if session['ID'] == 'NonMember':
+        flash("NonMemLike")
+        return  redirect(str_return)
+
+
     dates = request.form.getlist('checkdate')
     date1 = 0
     date2 = 0
@@ -207,7 +215,6 @@ def park_date(p_code):
     cursor.execute(sql,data)
     conn.commit()
     
-    str_return = "/details/" + str(p_code)
     return  redirect(str_return)
 
 # 만족도 좋아요, 보통, 싫어요 Insert(To want DB, 가고싶어요)
