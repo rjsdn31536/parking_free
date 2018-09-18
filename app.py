@@ -206,7 +206,7 @@ def signup_com():
     return render_template('login/signup_com.html')
 
 # 비회원 로그인
-@search.route("/nologin/")
+@search.route("/nologin")
 def nologin():
 
     e_mail = '비회원'
