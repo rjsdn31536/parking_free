@@ -209,7 +209,7 @@ def signup_com():
 @search.route("/nologin")
 def nologin():
 
-    e_mail = '비회원'
+    e_mail = 'bbb'
     session['ID'] = e_mail
 
     # 로그인 완료
