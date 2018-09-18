@@ -135,12 +135,18 @@ def login_result():
 
 @app.route("/member")
 def member():
+    email = session['ID']
+
+    if email == 'NonMember':
+        flash("NonMemData")
+        return render_template('search/index.html', park_want_len = 0)
+
+
     # DB 연동 - 연결
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
     # 실행자 생성
     cursor = conn.cursor()   
 
-    email = session['ID']
     
     sql = "select * from member where e_mail=%s"
     cursor.execute(sql, email)
