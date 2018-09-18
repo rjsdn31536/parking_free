@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, flash
 import googlemaps
 import pymysql
 import numpy as np
@@ -262,8 +262,11 @@ def hateside(p_code):
 @details.route("/comment/<p_code>", methods=['POST'])
 def comment(p_code):
 
-    if session['ID'] == 'NonMember':
-        str_return = "/details/" + str(p_code)
+    email = session['ID']
+    str_return = "/details/" + str(p_code)
+
+    if email == 'NonMember':
+        flash("NonMemOneLine")
         return  redirect(str_return)
 
 
@@ -280,5 +283,4 @@ def comment(p_code):
     conn.commit()
     conn.close()
 
-    str_return = "/details/" + str(p_code)
     return  redirect(str_return)
