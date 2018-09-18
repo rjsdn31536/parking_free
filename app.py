@@ -205,6 +205,18 @@ def member_update():
 def signup_com():
     return render_template('login/signup_com.html')
 
+# 비회원 로그인
+@search.route("/nologin/")
+def nologin():
+
+    e_mail = '비회원'
+    session['ID'] = e_mail
+
+    # 로그인 완료
+    session['logged_in'] = True
+
+    return render_template('search/index.html', park_want_len = 0)
+
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
 app.register_blueprint(datalab,url_prefix = '/datalab')
