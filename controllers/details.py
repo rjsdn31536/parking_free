@@ -263,6 +263,7 @@ def hateside(p_code):
 def comment(p_code):
 
     if session['ID'] == 'NonMember':
+        str_return = "/details/" + str(p_code)
         return  redirect(str_return)
 
 
