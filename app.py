@@ -142,8 +142,6 @@ def member():
     cursor = conn.cursor()   
 
     email = session['ID']
-	if email == 'Nonmember':
-		flash("Nonmember")
     
     sql = "select * from member where e_mail=%s"
     cursor.execute(sql, email)
@@ -209,18 +207,45 @@ def signup_com():
     return render_template('login/signup_com.html')
 
 # 비회원 로그인
-@app.route("/nologin")
+@search.route("/nologin")
 def nologin():
 
-    e_mail = 'NonMember'
+    e_mail = 'bbb'
     session['ID'] = e_mail
 
     # 로그인 완료
     session['logged_in'] = True
 
+    print('aaaahrtae')
+
+    conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
+
+    # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
+    # 실행자 생성
+    cursor = conn.cursor()   
+
+    execute_str = 'select p_code from want where e_mail = "' + session['ID'] + '"'
+    cursor.execute(execute_str) 
+    park_data = cursor.fetchall()
+    # want list는 e_mail 사용자가 방문했던 주차장 이름
+    park_want_list = list()
+        
+    # want list는 e_mail 사용자가 방문했던 주차장 코드(하이퍼링크에 필요)
+    park_code_list = list()
+
+    for park_code in park_data:
+        execute_str = "select p_name from parkinglot where p_code = " + str(park_code['p_code'])
+        cursor.execute(execute_str) 
+        park_name = cursor.fetchall()
+        park_want_list.append(park_name[0]['p_name'])
+        park_code_list.append(park_code['p_code'])
+
+    sql = "select * from member where e_mail=%s"
+    cursor.execute(sql, session['ID'])
+    member_data = cursor.fetchone()
 
     return render_template('search/index.html', member_data=member_data,
-            park_want_list = park_want_list, park_want_len = len(park_want_list), park_code_list =park_code_list)
+            park_want_list = park_want_list, park_want_len = 0, park_code_list =park_code_list)
 
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
