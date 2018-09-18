@@ -33,7 +33,6 @@ def login():
 
     # 로그인이 되어있지 않은 경우(로그인창 띄워야함))
     except:
-        print('aaaahrtae123')
         return render_template('login/login.html')
 
     # 로그인이 되어있는 경우
@@ -216,8 +215,6 @@ def nologin():
     # 로그인 완료
     session['logged_in'] = True
 
-    print('aaaahrtae')
-
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
 
     # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
@@ -245,7 +242,7 @@ def nologin():
     member_data = cursor.fetchone()
 
     return render_template('search/index.html', member_data=member_data,
-            park_want_list = park_want_list, park_want_len = 0, park_code_list =park_code_list)
+            park_want_list = park_want_list, park_want_len = len(park_want_list), park_code_list =park_code_list)
 
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
