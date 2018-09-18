@@ -268,10 +268,15 @@ def comment(p_code):
     
     # 실행자 생성
     cursor = conn.cursor()  
+    print('111')
     email = session['ID']
+    print("222")
     sql = 'update want set go_comment=%s where e_mail ="'+ email + '" and p_code=' + str(p_code)
+    print("333")
     cursor.execute(sql,comment_str)
+    print("444")
     conn.commit()
+    print("555")
     conn.close()
 
     str_return = "/details/" + str(p_code)

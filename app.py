@@ -142,6 +142,8 @@ def member():
     cursor = conn.cursor()   
 
     email = session['ID']
+	if email == 'Nonmember':
+		flash("Nonmember")
     
     sql = "select * from member where e_mail=%s"
     cursor.execute(sql, email)
@@ -207,18 +209,18 @@ def signup_com():
     return render_template('login/signup_com.html')
 
 # 비회원 로그인
-@search.route("/nologin")
+@app.route("/nologin")
 def nologin():
 
-    e_mail = 'bbb'
+    e_mail = 'NonMember'
     session['ID'] = e_mail
 
     # 로그인 완료
     session['logged_in'] = True
 
-    print('aaaahrtae')
 
-    return render_template('search/index.html', park_want_len = 0)
+    return render_template('search/index.html', member_data=member_data,
+            park_want_list = park_want_list, park_want_len = len(park_want_list), park_code_list =park_code_list)
 
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
