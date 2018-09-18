@@ -223,7 +223,6 @@ def nologin():
 
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8', cursorclass=pymysql.cursors.DictCursor)
 
-    # 검색 내역 데이터를 넘겨주기 위하여 DB에서 검색
     # 실행자 생성
     cursor = conn.cursor()   
 
@@ -232,6 +231,8 @@ def nologin():
     member_data = cursor.fetchone()
 
     sql = 'update member set family =' + str(member_data['family']+1) + 'where e_mail="NonMember"'
+
+    conn.commit()
 
     return render_template('search/index.html', park_want_len = 0)
 
