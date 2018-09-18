@@ -214,6 +214,12 @@ def park_date(p_code):
 @details.route("/like/<p_code>", methods=['POST'])
 def likeside(p_code):
     like = request.form['like']
+    str_return = "/details/" + str(p_code)
+    
+    # 예외처리(비회원)
+    if session['ID'] == 'NonMember':
+        flash("NonMemLike")
+        return  redirect(str_return)
         
     # DB 연동 - 연결
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
@@ -224,12 +230,17 @@ def likeside(p_code):
     cursor.execute(sql,like)
     conn.commit()
     conn.close()
-    str_return = "/details/" + str(p_code)
     return  redirect(str_return)
 
 @details.route("/normal/<p_code>", methods=['POST'])
 def normalside(p_code):
     normal = request.form['normal']
+    str_return = "/details/" + str(p_code)
+
+    # 예외처리(비회원)
+    if session['ID'] == 'NonMember':
+        flash("NonMemLike")
+        return  redirect(str_return)
         
     # DB 연동 - 연결
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
@@ -240,13 +251,17 @@ def normalside(p_code):
     cursor.execute(sql,normal)
     conn.commit()
     conn.close()
-    str_return = "/details/" + str(p_code)
     return  redirect(str_return)
     
 
 @details.route("/hate/<p_code>", methods=['POST'])
 def hateside(p_code):
     str_return = "/details/" + str(p_code)
+
+    # 예외처리(비회원)
+    if session['ID'] == 'NonMember':
+        flash("NonMemLike")
+        return  redirect(str_return)
 
 
     hate = request.form['hate']
@@ -255,11 +270,6 @@ def hateside(p_code):
     # 실행자 생성
     cursor = conn.cursor()  
     email = session['ID']
-
-    # 예외처리(비회원)
-    if email == 'NonMember':
-        flash("NonMemLike")
-        return  redirect(str_return)
 
     sql = 'update want set go_like=%s where e_mail ="'+ email + '" and p_code=' + str(p_code)
     cursor.execute(sql,hate)
