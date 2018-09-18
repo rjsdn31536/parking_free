@@ -184,7 +184,7 @@ def park_date(p_code):
     
     # 예외처리(비회원)
     if session['ID'] == 'NonMember':
-        flash("NonMemLike")
+        flash("NonMemwant")
         return  redirect(str_return)
 
 
