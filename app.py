@@ -33,6 +33,7 @@ def login():
 
     # 로그인이 되어있지 않은 경우(로그인창 띄워야함))
     except:
+            print('aaaahrtae123')
         return render_template('login/login.html')
 
     # 로그인이 되어있는 경우
@@ -215,6 +216,8 @@ def nologin():
     # 로그인 완료
     session['logged_in'] = True
 
+    print('aaaahrtae')
+
     return render_template('search/index.html', park_want_len = 0)
 
 app.register_blueprint(search,url_prefix = '/search')
@@ -224,4 +227,3 @@ app.register_blueprint(datalab,url_prefix = '/datalab')
 # app 실행
 if __name__ == "__main__":
     app.run(debug=True ,host="0.0.0.0" ,port=80)
-    
