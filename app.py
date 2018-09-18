@@ -210,7 +210,7 @@ def signup_com():
 @app.route("/nologin")
 def nologin():
 
-    e_mail = 'bbb'
+    e_mail = 'NonMember'
     session['ID'] = e_mail
 
     # 로그인 완료
