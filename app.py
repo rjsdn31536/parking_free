@@ -232,7 +232,7 @@ def nologin():
     member_data = cursor.fetchone()
 
     sql = "update member set family =%s where e_mail=%s"
-    cursor.execute(sql, member_data.'family'.+1, session['ID'])    
+    cursor.execute(sql, member_data['family']+1, session['ID'])    
 
     return render_template('search/index.html', park_want_len = 0)
 
