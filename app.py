@@ -230,7 +230,7 @@ def nologin():
     cursor.execute(sql, session['ID'])
     member_data = cursor.fetchone()
 
-    sql = 'update member set family =' + str(member_data['family']+1) + 'where e_mail="NonMember"'
+    sql = 'update member set family =' + str(member_data['family']+1) + ' where e_mail="NonMember"'
     cursor.execute(sql)
 
     conn.commit()
