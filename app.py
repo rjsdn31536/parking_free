@@ -227,28 +227,14 @@ def nologin():
     # 실행자 생성
     cursor = conn.cursor()   
 
-    execute_str = 'select p_code from want where e_mail = "' + session['ID'] + '"'
-    cursor.execute(execute_str) 
-    park_data = cursor.fetchall()
-    # want list는 e_mail 사용자가 방문했던 주차장 이름
-    park_want_list = list()
-        
-    # want list는 e_mail 사용자가 방문했던 주차장 코드(하이퍼링크에 필요)
-    park_code_list = list()
-
-    for park_code in park_data:
-        execute_str = "select p_name from parkinglot where p_code = " + str(park_code['p_code'])
-        cursor.execute(execute_str) 
-        park_name = cursor.fetchall()
-        park_want_list.append(park_name[0]['p_name'])
-        park_code_list.append(park_code['p_code'])
-
     sql = "select * from member where e_mail=%s"
     cursor.execute(sql, session['ID'])
     member_data = cursor.fetchone()
+    
+    sql = "update member set family =%s where e_mail=%s"
+    cursor.execute(sql, member_data.family+1, session['ID'])    
 
-    return render_template('search/index.html', member_data=member_data,
-            park_want_list = park_want_list, park_want_len = len(park_want_list), park_code_list =park_code_list)
+    return render_template('search/index.html', park_want_len = 0)
 
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
