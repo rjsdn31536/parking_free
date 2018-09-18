@@ -260,7 +260,12 @@ def hateside(p_code):
     return  redirect(str_return)
 
 @details.route("/comment/<p_code>", methods=['POST'])
-def comment(p_code):    
+def comment(p_code):
+
+    if session['ID'] == 'NonMember':
+        return  redirect(str_return)
+
+
     # DB 연동 - 연결
     conn = pymysql.connect(host='mydbgunooookim.chu7atpoeeaq.ap-northeast-2.rds.amazonaws.com',port=3306,user='rjsdn31536',passwd='gunooookim!', db='pythondb',charset='utf8')
 
@@ -268,15 +273,10 @@ def comment(p_code):
     
     # 실행자 생성
     cursor = conn.cursor()  
-    print('111')
     email = session['ID']
-    print("222")
     sql = 'update want set go_comment=%s where e_mail ="'+ email + '" and p_code=' + str(p_code)
-    print("333")
     cursor.execute(sql,comment_str)
-    print("444")
     conn.commit()
-    print("555")
     conn.close()
 
     str_return = "/details/" + str(p_code)
