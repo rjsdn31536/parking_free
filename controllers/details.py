@@ -167,9 +167,10 @@ def detailpage2(p_code):
 
 
     if check_data == ():
-        sql = "insert into want(e_mail, p_code) values(%s, %s)"        
-        data = (session['ID'], p_code_num)
-        cursor.execute(sql,data)
+        if session['ID'] != 'NonMember':
+            sql = "insert into want(e_mail, p_code) values(%s, %s)"        
+            data = (session['ID'], p_code_num)
+            cursor.execute(sql,data)
 
 
     conn.commit()
