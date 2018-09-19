@@ -102,10 +102,10 @@ def searchResult():
     addr_x = addr_ll['lat']
     addr_y = addr_ll['lng']
 
-    a = addr_x + 0.010
-    b = addr_x - 0.010
-    c = addr_y + 0.025
-    d = addr_y - 0.025
+    a = addr_x + 0.027
+    b = addr_x - 0.027
+    c = addr_y + 0.027
+    d = addr_y - 0.027
     
     execute_str = "select * from parkinglot where (p_lat > " + str(b) + ") and (p_lat < " + str(a) + ") and (p_long > "+ str(d) + ") and (p_long < " + str(c)+ ")"
 
