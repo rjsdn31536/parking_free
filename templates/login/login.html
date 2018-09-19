@@ -23,6 +23,16 @@
   
   <link href="/static/login/css/login.css" rel="stylesheet">
 
+  <!-- Popup Javascript -->
+  <script>
+    var centerY=Math.floor((screen.availHeight-(500 || screen.height))/2)-(screen.height-screen.availHeight);
+    var centerX=Math.floor((screen.availWidth-(600 || screen.width))/2)-(screen.width-screen.availWidth);
+
+    function personalpopup() {
+      window.open('personalpopup.html','개인정보활용동의서','menubar=no,toolbar=no,loaction=no,status=no,,width=600, height=500, resizable=no, left='+centerX+', top='+centerY+', screenx='+centerX+', screeny='+centerY);
+    }
+  </script>
+
 </head>
 
 <script type="text/javascript">
@@ -105,8 +115,7 @@ function MM_popupMsg(msg){
     <p style="font-size:20; text-align: center"> 정말 간단하게 회원가입이 가능합니다. 이메일을 포함한 간단한 정보를 입력하고 회원이 되어주세요!</p>
   </section>
 
-  <!-- Popup Javascript -->
-  <script type="text/javascript" src="personal.js"></script>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="/static/login/vendor/jquery/jquery.min.js"></script>
