@@ -50,7 +50,7 @@ function MM_popupMsg(msg){
     {% endwith %}
   <section class="container">
     <article class="half">
-      <h1 style="font-size:30px">공공주차장 서비스</h1>
+      <h1 style="font-size:30px;margin-bottom:0">공공주차장 서비스</h1>
       <div class="tabs" style="font-size:20px">
         <span class="tab signin active"><a>로그인</a></span>
         <span class="tab signup"><a>회원가입</a></span>
@@ -76,10 +76,10 @@ function MM_popupMsg(msg){
         </div>
         <div class="signup-cont cont">
           <form action="/login_result" method="POST">
-            <a href=javascript:personalpopup()>
+            <a href='javascript:void(personalpopup())'>
               (필수)개인정보활용동의서
-            </a>
-            <input type="radio" name="personal" value="동의" id="agree" >동의합니다.
+            </a>   
+            <input type="radio" name="personal" value="동의" id="agree" style="margin-left:25%;margin-bottom:15px">동의합니다.
             <input type="radio" name="personal" value="비동의" id="disagree" >비동의합니다(비회원로그인하세요)
             <input type="email" name="email" id="email" class="inpt" required="required" placeholder="E-mail">
             <label for="email">E-mail</label>
@@ -107,7 +107,7 @@ function MM_popupMsg(msg){
 
   <!-- Popup Javascript -->
   <script type="text/javascript" src="personal.js"></script>
-  
+
   <!-- Bootstrap core JavaScript -->
   <script src="/static/login/vendor/jquery/jquery.min.js"></script>
   <script src="/static/login/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
