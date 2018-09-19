@@ -22,7 +22,8 @@
   <link href="/static/login/css/stylish-portfolio.min.css" rel="stylesheet">
   
   <link href="/static/login/css/login.css" rel="stylesheet">
-
+  <!-- Popup Javascript -->
+  <script type="text/javascript" src="personal.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -76,6 +77,11 @@ function MM_popupMsg(msg){
         </div>
         <div class="signup-cont cont">
           <form action="/login_result" method="POST">
+            <a href=javascript:personalpopup()>
+              (필수)개인정보활용동의서
+            </a>
+            <input type="radio" name="personal" value="동의" id="agree" class="inpt">동의합니다.
+            <input type="radio" name="personal" value="비동의" id="disagree" class="inpt">비동의합니다(비회원로그인하세요)
             <input type="email" name="email" id="email" class="inpt" required="required" placeholder="E-mail">
             <label for="email">E-mail</label>
             <input type="phone" name="phone" id="phone" class="inpt" required="required" placeholder="전화번호">
