@@ -78,7 +78,7 @@ def login_result():
     user_address = request.form['address']
     user_age = request.form['age']
 
-    agree = request.form['agree']
+    agree = request.form['personal']
 
     print(agree)
 
