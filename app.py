@@ -237,6 +237,12 @@ def nologin():
 
     return render_template('search/index.html', park_want_len = 0)
 
+    
+# 비회원 로그인
+@app.route("/personalagreement")
+def agreement():
+    return render_template('login/personalagreement.html')
+
 app.register_blueprint(search,url_prefix = '/search')
 app.register_blueprint(details,url_prefix = '/details')
 app.register_blueprint(datalab,url_prefix = '/datalab')
