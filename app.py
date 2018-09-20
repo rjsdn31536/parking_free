@@ -78,10 +78,11 @@ def login_result():
     user_address = request.form['address']
     user_age = request.form['age']
 
-    agree = request.form['personal']
-    if not agree=='동의':
+    try :
+        agree = request.form['personal']            
+    except:
         flash("비동의")
-        return redirect('/')
+            return redirect('/')
 
 
     print(agree)
