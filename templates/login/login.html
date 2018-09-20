@@ -61,7 +61,7 @@ function MM_popupMsg(msg){
   <section class="container">
     <article class="half">
       <h1 style="font-size:30px;margin-bottom:0">공공주차장 서비스</h1>
-      <div class="tabs" style="font-size:20px">
+      <div class="tabs" style="font-size:20px;margin-bottom:10px">
         <span class="tab signin active"><a>로그인</a></span>
         <span class="tab signup"><a>회원가입</a></span>
       </div>
@@ -86,11 +86,13 @@ function MM_popupMsg(msg){
         </div>
         <div class="signup-cont cont">
           <form action="/login_result" method="POST">
-            <a href='www.publicparking.kr/personalagreement' onclick='personalpopup(); return false'>
+            <a href='www.publicparking.kr/personalagreement' onclick='personalpopup(); return false' style="font-size:larger;color:blue">
               (필수)개인정보활용동의서
             </a>   
             <input type="radio" name="personal" value="동의" id="agree" style="margin-left:25%;margin-bottom:15px">동의합니다.
-            <input type="radio" name="personal" value="비동의" id="disagree" >비동의합니다(비회원로그인하세요)
+            <div>
+              <span style="font-weight:bold">※비동의하시는 경우 비회원로그인을 이용하시길 바랍니다.※</span>
+            </div>
             <input type="email" name="email" id="email" class="inpt" required="required" placeholder="E-mail">
             <label for="email">E-mail</label>
             <input type="phone" name="phone" id="phone" class="inpt" required="required" placeholder="전화번호">
