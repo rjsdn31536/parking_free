@@ -82,7 +82,7 @@ def login_result():
         agree = request.form['personal']            
     except:
         flash("비동의")
-            return redirect('/')
+        return redirect('/')
 
 
     print(agree)
