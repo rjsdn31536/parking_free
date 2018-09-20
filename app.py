@@ -77,6 +77,11 @@ def login_result():
     user_pnum = request.form['phone']
     user_address = request.form['address']
     user_age = request.form['age']
+
+    agree = request.form['agree']
+
+    print(agree)
+
     # ERROR CASE. 나이를 잘못 입력(문자 입력)
     if not user_age.isnumeric():
         flash('나이')
